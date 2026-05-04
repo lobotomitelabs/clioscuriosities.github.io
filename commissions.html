@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commissions — Clio's Curiosities</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --rose:    #e8a0a0;
+    --rose-lt: #f2c4c4;
+    --rose-dk: #c47070;
+    --parchment: #fdf4e3;
+    --parch-dk:  #f0e0c0;
+    --ink:    #3a2a1a;
+    --ink-lt: #6b4c2a;
+    --gold:   #d4a017;
+    --gold-lt:#f0c840;
+    --bg:     #1a1020;
+    --bg2:    #2a1a10;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: 'Lora', serif;
+    color: var(--parch-dk);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+
+  #stars { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+  .star {
+    position: absolute; border-radius: 50%; background: white;
+    animation: twinkle var(--d, 2s) ease-in-out infinite alternate;
+  }
+  @keyframes twinkle { from{opacity:0.2} to{opacity:1} }
+
+
+  .page {
+    position: relative; z-index: 1;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 60px 24px 80px;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .back-link {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--rose);
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0.7;
+    transition: opacity 0.15s;
+  }
+  .back-link:hover { opacity: 1; }
+  .page-title {
+    font-family: 'Cinzel', serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--rose-lt);
+    letter-spacing: 4px;
+    text-shadow: 0 0 30px rgba(230,150,150,0.4);
+    margin-bottom: 8px;
+  }
+  .page-sub {
+    font-style: italic;
+    font-size: 13px;
+    color: var(--parch-dk);
+    opacity: 0.7;
+  }
+  .divider {
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rose-dk), transparent);
+    margin: 20px auto 0;
+  }
+
+  .status-banner {
+    background: var(--bg2);
+    border: 2px solid var(--rose-dk);
+    border-radius: 4px;
+    padding: 12px 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+  .status-open { color: #80d080; }
+  .status-closed { color: var(--rose-dk); }
+  .status-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 8px;
+    background: #80d080;
+    box-shadow: 0 0 6px #80d080;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .status-dot.closed { background: var(--rose-dk); box-shadow: 0 0 6px var(--rose-dk); }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--rose);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    opacity: 0.8;
+  }
+
+  .cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+
+  .card {
+    background: var(--bg2);
+    border: 2px solid #3a2010;
+    border-radius: 4px;
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: border-color 0.2s, transform 0.15s;
+    cursor: default;
+  }
+  .card:hover {
+    border-color: var(--rose-dk);
+    transform: translateX(4px);
+  }
+  .card-icon { font-size: 32px; flex-shrink: 0; }
+  .card-info { flex: 1; }
+  .card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    color: var(--rose-lt);
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .card-desc {
+    font-style: italic;
+    font-size: 12px;
+    color: var(--parch-dk);
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+  .card-price {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .card-price-from {
+    font-size: 9px;
+    color: var(--gold);
+    opacity: 0.7;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .tos-box {
+    background: var(--bg2);
+    border: 2px solid #3a2010;
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 40px;
+  }
+  .tos-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .tos-list li {
+    font-size: 12px;
+    color: var(--parch-dk);
+    opacity: 0.8;
+    line-height: 1.5;
+    padding-left: 16px;
+    position: relative;
+  }
+  .tos-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--rose-dk);
+    font-size: 8px;
+    top: 3px;
+  }
+
+  .cta-box {
+    text-align: center;
+    padding: 32px;
+    background: var(--bg2);
+    border: 2px solid var(--rose-dk);
+    border-radius: 4px;
+  }
+  .cta-text {
+    font-style: italic;
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: var(--rose-dk);
+    border: 2px solid var(--rose-lt);
+    border-bottom: 4px solid #8a3838;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 12px 28px;
+    cursor: pointer;
+    border-radius: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: all 0.1s;
+    position: relative; z-index: 1;
+  }
+  .cta-btn:hover { background: var(--rose); transform: translateY(-2px); }
+  .cta-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
+</style>
+</head>
+<body>
+
+<div id="stars"></div>
+
+<div class="page">
+
+  <div class="page-header">
+    <a href="index.html" class="back-link">← Back to Curiosities</a>
+    <h1 class="page-title">✦ Commissions ✦</h1>
+    <p class="page-sub">Let's make something together</p>
+    <div class="divider"></div>
+  </div>
+
+  <div class="status-banner">
+    <span class="status-dot"></span>
+    <span class="status-open">Commissions Open</span>
+  </div>
+
+  <div class="section-title">✦ What I Offer ✦</div>
+  <div class="cards">
+
+    <div class="card" data-link = "https://ko-fi.com/lobotomitelabs/commissions">
+      <div class="card-icon">💻</div>
+      <div class="card-info">
+        <div class="card-name">Coding</div>
+        <div class="card-desc">Toyhouse and Tumblr Profiles, Dicord Bots & Web Design. </div>
+      </div>
+      <div class="card-price">
+        <span class="card-price-from">from</span>
+        $5-100
+      </div>
+    </div>
+
+    <div class="card" data-link = "https://clios-closet.square.site">
+      <div class="card-icon">🧶</div>
+      <div class="card-info">
+        <div class="card-name">Crochet</div>
+        <div class="card-desc">Shirts, Dresses and Accessories.</div>
+      </div>
+      <div class="card-price">
+        <span class="card-price-from">from</span>
+        $20-?
+      </div>
+    </div>
+
+    <div class="card" data-link = "https://www.notion.so/@lobotomitelabs">
+      <div class="card-icon">📝</div>
+      <div class="card-info">
+        <div class="card-name">Notion Templates</div>
+        <div class="card-desc">Templates made for notion; made for you!</div>
+      </div>
+      <div class="card-price">
+        <span class="card-price-from">from</span>
+        $25
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-title">✦ Terms of Service ✦</div>
+  <div class="tos-box">
+    <ul class="tos-list">
+      <li>Payment upfront via Ko-fi before work begins.</li>
+      <li>I reserve the right to decline any commission for any reason.</li>
+      <li>Personal use only unless a commercial license is discussed.</li>
+      <li>No refunds once work has started.</li>
+      <li>Please credit me if you post the work anywhere.</li>
+      <li>Turnaround time varies — I'll give you an estimate when you reach out.</li>
+    </ul>
+  </div>
+  <div class="cta-box">
+    <p class="cta-text">Ready to commission something? Reach out and let's chat!</p>
+    <a href="https://www.instagram.com/lobotomitelabs/" class="cta-btn">✦ Get in Touch ✦</a>
+  </div>
+
+</div>
+
+<script>
+window.onload = function() {
+  const container = document.getElementById('stars');
+  for (let i = 0; i < 80; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    star.style.width = size + 'px';
+    star.style.height = size + 'px';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.setProperty('--d', (Math.random() * 3 + 1).toFixed(1) + 's');
+    star.style.animationDelay = (Math.random() * 3).toFixed(1) + 's';
+    container.appendChild(star);
+  }
+};
+document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('click', () => {
+      const link = card.dataset.link;
+      if (link) window.open(link, '_blank');
+    });
+    card.style.cursor = 'pointer';
+  });
+</script>
+</body>
+</html>

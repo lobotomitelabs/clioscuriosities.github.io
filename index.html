@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <meta charset = "UTF-8">
+        <title>Clio's Curiousities</title>
+        <link rel = "stylesheet" href = "styles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div id = "stars"></div>
+        <div id = "title-container">
+                <div id = "floating-keys"></div>
+            </div> 
+            <div id="cabinet">
+                <div class="cabinet-top"></div>
+                <div class="cabinet-body">
+                  <div class="shelf">
+                    <div class="curiosity" data-title="Spellboard" data-desc="A typing RPG dungeon crawler" data-link="https://clibotomy.itch.io/spellboard">
+                      <div class="curiosity-icon">✨</div>
+                      <div class="curiosity-label">Spellboard</div>
+                    </div>
+                    <div class="curiosity" data-title="???" data-desc="Coming soon..." data-link="#">
+                      <div class="curiosity-icon">📦</div>
+                      <div class="curiosity-label">???</div>
+                    </div>
+                    <div class="curiosity" data-title="???" data-desc="Coming soon..." data-link="#">
+                      <div class="curiosity-icon">📦</div>
+                      <div class="curiosity-label">???</div>
+                    </div>
+                  </div>
+                  <div class="shelf">
+                    <div class="curiosity" data-title="???" data-desc="Coming soon..." data-link="#">
+                      <div class="curiosity-icon">📦</div>
+                      <div class="curiosity-label">???</div>
+                    </div>
+                    <div class="curiosity" data-title="???" data-desc="Coming soon..." data-link="#">
+                      <div class="curiosity-icon">📦</div>
+                      <div class="curiosity-label">???</div>
+                    </div>
+                    <div class="curiosity" data-title="???" data-desc="Coming soon..." data-link="#">
+                      <div class="curiosity-icon">📦</div>
+                      <div class="curiosity-label">???</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="cabinet-bottom"></div>
+                <div id="curiosity-tooltip">
+                  <div id="tooltip-title"></div>
+                  <div id="tooltip-desc"></div>
+                  <div id="tooltip-hint">click to visit →</div>
+                </div>
+              </div>
+        <div id = "jar-shelf">
+          <div class = "jar-shelf-board">
+            <div class = "jar" data-title = "Contacts" data-desc="Ways To Contact Me" data-link="#">
+              <div class = "jar-icon">🫙</div>
+              <div class = "jar-label">Contact</div>
+            </div>
+            <div class = "jar" data-title = "Support" data-desc="Ways To Support Me" data-link="#">
+              <div class = "jar-icon">🫙</div>
+              <div class = "jar-label">Support</div>
+            </div>
+            <div class = "jar" data-title = "Commomissions" data-desc="Ways To Comission Me" data-link="#">
+              <div class = "jar-icon">🫙</div>
+              <div class = "jar-label">Commissons</div>
+            </div>
+            <div class = "jar" data-title = "Side Quests" data-desc="Things I Also Do" data-link="#">
+              <div class = "jar-icon">🫙</div>
+              <div class = "jar-label">Side Quests</div>
+            </div>
+            <div class = "jar" data-title = "Fun" data-desc="LOOK!" data-link="#">
+              <div class = "jar-icon">🫙</div>
+              <div class = "jar-label">Fun</div>
+            </div>
+          </div>
+          <div class = "jar-shelf-bracket left"></div>
+          <div class = "jar-shelf-bracket top"></div>
+        </div>
+        <div id="popup-contacts" class="jar-popup-panel">
+          <button class="popup-close" onclick="closeAllPopups()">✕</button>
+          <div class="popup-title">📬 Contact</div>
+          <div class="popup-body">
+            <a href="https://discord.gg/yUNRYAGEY" target="_blank" class="popup-link">🎮 Discord</a>
+            <a href="mailto:lobotomitelabs@gmail.com" target="_blank" class="popup-link">📧 Email Me! </a>
+            <a href="https://www.instagram.com/lobotomitelabs/" target="_blank" class="popup-link">🎨 Instagram</a>
+          </div>
+        </div>
+        <div id="popup-support" class="jar-popup-panel">
+          <button class="popup-close" onclick="closeAllPopups()">✕</button>
+          <div class="popup-title">💛 Support</div>
+          <div class="popup-body">
+            <a href="https://ko-fi.com/lobotomitelabs" target="_blank" class="popup-link">☕ Ko-fi</a>
+            <a href="https://www.redbubble.com/people/lobotomitelabs/shop?asc=u" target="_blank" class="popup-link">🛒 Merch</a>
+            <a href="#" target="_blank" class="popup-link">Coming soon... 👀</a>
+          </div>
+        </div>
+        <div id="popup-sidequests" class="jar-popup-panel">
+          <button class="popup-close" onclick="closeAllPopups()">✕</button>
+          <div class="popup-title">⚔️ Side Quests</div>
+          <div class="popup-body">
+            <div class="popup-item">🎨 Digital Art</div>
+            <div class="popup-item">🎬 Video Editing</div>
+            <div class="popup-item">🎮 Game Dev</div>
+            <div class="popup-item">✏️ Coming soon...</div>
+          </div>
+        </div>
+        <div id="popup-commissions" class="jar-popup-panel">
+          <button class="popup-close" onclick="closeAllPopups()">✕</button>
+          <div class="popup-title">💻 Commissions</div>
+          <div class="popup-body">
+            <div class="popup-commission-item">
+              <span class="popup-item">Discord Cog</span>
+              <span class="popup-price">$5</span>
+            </div>
+            <div class="popup-commission-item">
+              <span class="popup-item">Discord Bot</span>
+              <span class="popup-price">$50</span>
+            </div>
+            <div class="popup-commission-item">
+              <span class="popup-item">Website Design</span>
+              <span class="popup-price">$100</span>
+            </div>
+            <a href="commissions.html" class="popup-link" target="_blank">View Full Sheet →</a>
+          </div>
+        </div>
+        <div id="popup-fun" class="jar-popup-panel">
+          <button class="popup-close" onclick="closeAllPopups()">✕</button>
+          <div class="popup-title">✨ Fun!</div>
+          <div class="popup-body">
+            <div class="popup-item">Coming soon... 👀</div>
+          </div>
+        </div>
+        <div id="popup-overlay" onclick="closeAllPopups()"></div>
+      <script src="stars.js"></script>
+    </body>
+</html>

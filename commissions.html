@@ -236,6 +236,22 @@
   }
   .cta-btn:hover { background: var(--rose); transform: translateY(-2px); }
   .cta-btn:active { transform: translateY(2px); border-bottom-width: 2px; }
+  .status-dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    box-shadow: 0, 0, 8px rgba(0,0,0,2);
+  }
+  .open {
+    background-color: #008000;
+    box-shadow: 0 0 8px #28b868;
+  }
+  .closed {
+    background-color: #ff4b4b;
+    background-shadow: 0 0 8px #ff4b4b;
+  }
 </style>
 </head>
 <body>
@@ -262,7 +278,9 @@
     <div class="card" data-link = "https://ko-fi.com/lobotomitelabs/commissions">
       <div class="card-icon">💻</div>
       <div class="card-info">
+        
         <div class="card-name">Coding</div>
+          <span class = "status-dot open"></span>
         <div class="card-desc">Toyhouse and Tumblr Profiles, Dicord Bots & Web Design. </div>
       </div>
       <div class="card-price">
@@ -274,7 +292,9 @@
     <div class="card" data-link = "https://clios-closet.square.site">
       <div class="card-icon">🧶</div>
       <div class="card-info">
+        
         <div class="card-name">Crochet</div>
+          <span class = "status-dot closed"></span>
         <div class="card-desc">Shirts, Dresses and Accessories.</div>
       </div>
       <div class="card-price">
@@ -286,7 +306,9 @@
     <div class="card" data-link = "https://www.notion.so/@lobotomitelabs">
       <div class="card-icon">📝</div>
       <div class="card-info">
+        
         <div class="card-name">Notion Templates</div>
+            <span class = "status-dot open"></span>
         <div class="card-desc">Templates made for notion; made for you!</div>
       </div>
       <div class="card-price">
